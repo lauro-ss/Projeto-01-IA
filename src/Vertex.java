@@ -4,6 +4,7 @@ class Vertex
    public String label;
    public boolean vencedorX = false;
    public boolean vencedorO = false;
+   public boolean empate = false;
    public char[][] matriz = new char[3][3];
 
    public Vertex(String lab) {
@@ -15,6 +16,7 @@ class Vertex
    public void verificaVecedor(String label){
       int contX = 0;
       int contO = 0;
+      int contEmpate = 0;
       /*conta linhas */
       for(int i = 0; i < 3;i++){
          for(int c = 0; c < 3; c++){
@@ -102,6 +104,16 @@ class Vertex
          return;
       }
 
+      for(int i = 0; i < 3; i++){
+         for(int c = 0; c < 3; c++){
+            if(matriz[i][c] != '.')
+               contEmpate++;
+         }
+      }
+      if(contEmpate == 9){
+         this.empate = true;
+         return;
+      }
    }
 
    public char[][] preencheMatriz(String label){
