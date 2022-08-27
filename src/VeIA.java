@@ -8,13 +8,12 @@ public class VeIA {
     private Vertex vertex[] = new Vertex[5477];
     private Vertex mapa_vitoria[] = new Vertex[5477];
     private Vertex mapa_derrota[] = new Vertex[5477];
-    private Vertex mapa_empate[] = new Vertex[5477];
     private Vertex mapa_prox_jogada[] = new Vertex[5477];
 
     private char meuCaractere;
     private char opCaractere;
 
-    private int i, c_vitorias = 0, c_empates = 0, c_jogadas = 0, c_derrotas = 0;
+    private int i, c_vitorias = 0, c_jogadas = 0, c_derrotas = 0;
     private int grau;
 
     public VeIA() throws IOException{
@@ -37,8 +36,7 @@ public class VeIA {
      */
     public int jogue(String label, int numJogadas){
         if(numJogadas == 0){
-            c_vitorias = 0; 
-            c_empates = 0;
+            c_vitorias = 0;
             c_jogadas = 0;
             this.meuCaractere = 'O';
             this.opCaractere = 'X';
@@ -48,10 +46,8 @@ public class VeIA {
                 if(grau >= 0 && vertex[i].vencedorO == true){
                     mapa_vitoria[c_vitorias] = new Vertex(vertex[i].label, vertex[i].numJogadas);
                     c_vitorias++;
-                }else if(grau >= 0 && vertex[i].empate == true){
-                    mapa_empate[c_empates] = new Vertex(vertex[i].label, vertex[i].numJogadas);
-                    c_empates++;
-                }else if(grau >= 0 && vertex[i].vencedorX == true){
+                }
+                else if(grau >= 0 && vertex[i].vencedorX == true){
                     mapa_derrota[c_derrotas] = new Vertex(vertex[i].label, vertex[i].numJogadas);
                     c_derrotas++;
                 }
@@ -124,8 +120,7 @@ public class VeIA {
 
         }
         else if(numJogadas == 1){
-            c_vitorias = 0; 
-            c_empates = 0;
+            c_vitorias = 0;
             c_jogadas = 0;
             this.meuCaractere = 'X';
             this.opCaractere = 'O';
@@ -135,9 +130,6 @@ public class VeIA {
                 if(grau >= 0 && vertex[i].vencedorX == true){
                     mapa_vitoria[c_vitorias] = new Vertex(vertex[i].label, vertex[i].numJogadas);
                     c_vitorias++;
-                }else if(grau >= 0 && vertex[i].empate == true){
-                    mapa_empate[c_empates] = new Vertex(vertex[i].label, vertex[i].numJogadas);
-                    c_empates++;
                 }else if(grau >= 0 && vertex[i].vencedorO == true){
                     mapa_derrota[c_derrotas] = new Vertex(vertex[i].label, vertex[i].numJogadas);
                     c_derrotas++;
