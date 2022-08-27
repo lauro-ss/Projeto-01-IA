@@ -31,7 +31,7 @@ public class VeiaIA {
      * Chame esse metódo se quiser que a IA comece jogando
      * e por padrao ela ira ser o caractere 'O'
      */
-    public void start(){
+    public int start(){
         c_vitorias = 0; 
         c_empates = 0;
         this.meuCaractere = 'O';
@@ -45,6 +45,8 @@ public class VeiaIA {
                 c_empates++;
             }
         }
+        //posicao do meio do tabuleiro, a IA sempre vai comecar jogando no meio
+        return 4;
     }
     /**
      * O metodo jogue retorna um inteiro representado a posicao que a IA jogou
@@ -53,6 +55,7 @@ public class VeiaIA {
      * @return
      */
     public int jogue(String label, int numJogadas){
+        int jogada = 0;
         if(numJogadas == 1){
             c_vitorias = 0; 
             c_empates = 0;
@@ -68,12 +71,12 @@ public class VeiaIA {
                     c_empates++;
                 }
             }
-            
+
             for(i = 0; i < 5477; i++){
                 grau = vertex[i].matches(label);
                 if(grau == numJogadas && vertex[i].numJogadas == numJogadas+1){
-                    vertex[i].printMatriz();
-                    System.out.println();
+                    mapa_prox_jogada[c_jogadas] = new Vertex(vertex[i].label, vertex[i].numJogadas);
+                    c_jogadas++;
                 }
             }
         }else{
@@ -81,11 +84,11 @@ public class VeiaIA {
             for(i = 0; i < 5477; i++){
                 grau = vertex[i].matches(label);
                 if(grau == numJogadas && vertex[i].numJogadas == numJogadas+1){
-                    vertex[i].printMatriz();
-                    System.out.println();
+                    mapa_prox_jogada[c_jogadas] = new Vertex(vertex[i].label, vertex[i].numJogadas);
+                    c_jogadas++;
                 }
             }
         }
-        return 0;
+        return jogada;
     }
 }
