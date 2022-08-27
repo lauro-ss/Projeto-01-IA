@@ -8,7 +8,7 @@ public class App {
         
         
         VeiaIA ia = new VeiaIA();
-        ia.jogue(".....O...", 1);    
+        System.out.println(ia.jogue("X..O...O.", 3));    
         //mapa_vitoria[random.nextInt(c)].printMatriz();
         //mapa_empate[random.nextInt(z)].printMatriz();
         //mapa_vitoria[i].printMatriz();
