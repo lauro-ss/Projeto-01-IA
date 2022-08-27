@@ -1,13 +1,9 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
         
         
-        VeiaIA ia = new VeiaIA();
+        VeIA ia = new VeIA();
         System.out.println(ia.jogue("..X...O..", "..X...O..".replace(".", "").length()));    
         //mapa_vitoria[random.nextInt(c)].printMatriz();
         //mapa_empate[random.nextInt(z)].printMatriz();

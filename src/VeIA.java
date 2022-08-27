@@ -2,16 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Random;
 
-public class VeiaIA {
+public class VeIA {
     
     private Vertex vertex[] = new Vertex[5477];
     private Vertex mapa_vitoria[] = new Vertex[5477];
     private Vertex mapa_derrota[] = new Vertex[5477];
     private Vertex mapa_empate[] = new Vertex[5477];
     private Vertex mapa_prox_jogada[] = new Vertex[5477];
-    private Vertex mapa_atual;
 
     private char meuCaractere;
     private char opCaractere;
@@ -19,7 +17,7 @@ public class VeiaIA {
     private int i, c_vitorias = 0, c_empates = 0, c_jogadas = 0, c_derrotas = 0;
     private int grau;
 
-    public VeiaIA() throws IOException{
+    public VeIA() throws IOException{
         int i = 0;
         String linha;
         String caminho = System.getProperty("user.dir") + "\\CSV\\grafo.csv";
@@ -131,7 +129,7 @@ public class VeiaIA {
             c_jogadas = 0;
             this.meuCaractere = 'X';
             this.opCaractere = 'O';
-            
+
             for(i = 0; i < 5477; i++){
                 grau = vertex[i].matches(label);
                 if(grau >= 0 && vertex[i].vencedorX == true){
