@@ -2,12 +2,14 @@
 class Vertex
    {
    public String label;
+   public int numJogadas;
    public boolean vencedorX = false;
    public boolean vencedorO = false;
    public boolean empate = false;
    public char[][] matriz = new char[3][3];
 
-   public Vertex(String lab) {
+   public Vertex(String lab, int numJogadas) {
+      this.numJogadas = numJogadas;
       this.label = lab;
       this.matriz = preencheMatriz(lab);
       verificaVecedor(lab);
