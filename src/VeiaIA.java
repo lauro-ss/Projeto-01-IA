@@ -174,7 +174,6 @@ public class VeiaIA {
                             //System.out.println();
                             //"X..OO...."
                             //"XX.OOO..."
-                            //System.out.println(mapa_derrota[c].label);
                             for(int z = 0; z < 9; z++){
                                 if(label.charAt(z) == '.' && mapa_derrota[c].label.charAt(z) == opCaractere){
                                     return z;
@@ -183,11 +182,26 @@ public class VeiaIA {
                         }
                     }
                 }
-                // joga no melhor cenario com o maior peso
+                // jogagada com maior peso em cenario trivial
+                for(i = 0; i < c_jogadas; i++){
+                    if(mapa_prox_jogada[i].label.charAt(4) == meuCaractere && label.charAt(4) != meuCaractere){
+                        return 4;
+                    }
+                }
+                // jogada com peso medio em cenario trivial
                 for(i = 0; i < c_jogadas; i++){
                     for(int c = 0; c < 9; c++){
-                        if(c%2 == 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere)
+                        if(c%2 == 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere && label.charAt(c) != meuCaractere){
                             return c;
+                        }
+                    }
+                }
+                // jogada com peso baixo em cenario trivial
+                for(i = 0; i < c_jogadas; i++){
+                    for(int c = 0; c < 9; c++){
+                        if(c%2 != 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere && label.charAt(c) != meuCaractere){
+                            return c;
+                        }
                     }
                 }
             }if(numJogadas%2 == 0){
@@ -256,6 +270,28 @@ public class VeiaIA {
                     for(int c = 0; c < 9; c++){
                         if(c%2 == 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere)
                             return c;
+                    }
+                }
+                // jogagada com maior peso em cenario trivial
+                for(i = 0; i < c_jogadas; i++){
+                    if(mapa_prox_jogada[i].label.charAt(4) == meuCaractere && label.charAt(4) != meuCaractere){
+                        return 4;
+                    }
+                }
+                // jogada com peso medio em cenario trivial
+                for(i = 0; i < c_jogadas; i++){
+                    for(int c = 0; c < 9; c++){
+                        if(c%2 == 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere && label.charAt(c) != meuCaractere){
+                            return c;
+                        }
+                    }
+                }
+                // jogada com peso baixo em cenario trivial
+                for(i = 0; i < c_jogadas; i++){
+                    for(int c = 0; c < 9; c++){
+                        if(c%2 != 0 && mapa_prox_jogada[i].label.charAt(c) == meuCaractere && label.charAt(c) != meuCaractere){
+                            return c;
+                        }
                     }
                 }
             }
